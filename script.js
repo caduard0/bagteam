@@ -31,6 +31,14 @@ const bag_item = document.querySelector("#bag-item-template")
   .content
   .querySelector(".bag-item");
 
+function ImageExists(image_url)
+{
+  var http = new XMLHttpRequest();
+  http.open('HEAD', image_url, false);
+  http.send();
+  return http.status != 404;
+}
+
 function FillBagSpaces()
 {
   var bagmon_list = document.querySelector(".bagmon-list");
@@ -57,7 +65,12 @@ async function FillMiddleContainer()
       current_item.querySelector(".number").innerHTML += "0";
 
     current_item.querySelector(".number").innerHTML += i;
-    current_item.querySelector(".image").src = "images/bagmons/" + i + ".png";
+
+    current_item.querySelector(".image").src = "images/new_bagmons/" + i + ".webp";
+
+    if(!ImageExists("images/new_bagmons/" + i + ".webp"))
+      current_item.querySelector(".image").src = "images/bagmons/" + i + ".png";
+
 
     current_item.querySelector(".name").innerHTML = data[i]['name']; // Name
     current_item.querySelectorAll(".types > img")[0].src = "images/types/bagdex/" + data[i]["types"][1] + ".webp"; // Type 1
