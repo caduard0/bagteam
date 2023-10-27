@@ -1,0 +1,392 @@
+:root {
+    --color-header: rgb(48, 48, 48);
+    --color-footer: rgb(48, 48, 48);
+    --color-bg: rgb(28, 28, 28);
+    --color-left-bg: rgb(97, 97, 97);
+    --color-middle-bg: rgb(97, 97, 97);
+
+    --color-select: rgb(77, 77, 77);
+    --color-select-selected: rgb(120, 120, 120);
+    --color-select-hover: rgb(150, 150, 150);
+
+    --color-overview: rgb(77, 77, 77);
+    --color-overview-selected: rgb(120, 120, 120);
+    --color-overview-hover: rgb(150, 150, 150);
+
+    --color-close: rgb(255, 0, 0);
+    --color-close-hover: rgb(255, 120, 120);
+    --color-close-text: rgb(240, 248, 255);
+
+    --color-search: rgb(77, 77, 77);
+
+    --color-bag-item: rgb(77, 77 ,77);
+    --color-bag-item-hover: rgb(150, 150, 150);
+
+
+    --color-text-name: rgb(240, 248, 255);
+    --color-text-number: rgb(240, 248, 255);
+    --color-text-footer: rgb(240, 248, 255);
+}
+
+body {
+    margin: 0px;
+}
+
+header {
+    display: flex;
+
+    width: 100vw;
+    height: 100px;
+
+    justify-content: center;
+    background-color: var(--color-header);
+}
+
+footer {
+    position: relative;
+    display: flex;
+
+    height: 22px;
+
+    align-content: center;
+
+    padding-top: 5px;
+    padding-left: 5px;
+
+    background-color: var(--color-footer);
+    color: var(--color-text-footer);
+}
+
+header .logo {
+    width: 160px;
+    height: 90px;
+
+    padding: 5px;
+}
+
+main .app {
+    display: flex;
+    flex-direction: row;
+
+    position: relative;
+    overflow: hidden;
+
+    /* calc((screen_height - header_height - footer_height)) */
+    height: calc(100vh - 100px - 27px);
+
+    background-color: var(--color-bg);
+}
+
+main .left-container {
+    display: flex;
+    flex-direction: column;
+    
+    position: relative;
+    overflow-y: auto;
+
+
+    width: 33%;
+    height: 100%;
+
+    max-width: 400px;
+    min-width: 40px;
+
+    z-index: 100;
+}
+
+main .left-container .bagmon-list {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding-bottom: 5px;
+
+    background-color: var(--color-left-bg);
+}
+
+.bagmon-list .bag-space {
+    display: flex;
+
+    cursor: pointer;
+    
+    width: auto;
+    height: 131px;
+    
+    margin: 5px;
+    margin-bottom: 0px;
+    padding: 5px;
+    
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--color-select);
+}
+
+.bagmon-list .bag-space:hover {
+    background-color: var(--color-select-hover);
+    z-index: 200;
+}
+
+.bagmon-list .bag-space.selected {
+    background-color: var(--color-select-selected);
+    z-index: 200;
+}
+
+.bagmon-list .bag-space.selected:hover {
+    background-color: var(--color-select-hover);
+    z-index: 200;
+}
+
+.bag-space .label {
+    font-size: 37px;
+    text-wrap: nowrap;
+    overflow-x: hidden;
+
+    user-select: none;
+    z-index: 110;
+
+    color: aliceblue;
+}
+
+.bagmon-list .bag-overview {
+    display: flex;
+
+    cursor: pointer;
+    
+    width: auto;
+    height: 131px;
+    
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 0px;
+
+    align-items: center;
+    
+    background-color: var(--color-overview);
+}
+
+.bagmon-list .bag-overview:hover {
+    background-color: var(--color-overview-hover);
+}
+
+.bagmon-list .bag-overview.selected {
+    background-color: var(--color-overview-selected);
+}
+
+.bagmon-list .bag-overview.selected:hover {
+    background-color: var(--color-overview-hover);
+}
+
+.bag-overview .close {
+    user-select: none;
+    position: absolute;
+
+    cursor: pointer;
+
+    left: 5px;
+
+    height: 30px;
+    width: 30px;
+
+    font-size: 26px;
+
+    padding: 4px;
+    margin-bottom: 103px;
+
+    text-align: center;
+
+    z-index: 150;
+    background-color: var(--color-close);
+    color: var(--color-close-text);
+}
+
+.bag-overview .close:hover {
+    background-color: var(--color-close-hover);
+}
+
+.bag-overview .image {
+    user-select: none;
+    height: 100px;
+    width: 100px;
+
+    margin: 20px;
+
+    z-index: 140;
+}
+
+.bag-overview .details {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.details .number {
+    user-select: none;
+    display: flex;
+    align-items: baseline;
+    font-size: 17px;
+    color: var(--color-text-number);
+}
+
+.details .types {
+    user-select: none;
+    height: 40px;
+    width: 40px;
+}
+
+.details .name {
+    user-select: none;
+    font-size: 20px;
+    color: var(--color-text-name);
+}
+
+
+
+
+main .middle-container {
+    display: flex;
+    flex-direction: column;
+    
+    position: relative;
+    overflow-y: auto;
+
+    width: 550px;
+    height: 100%;
+
+    right: -5px;
+
+    z-index: 100;
+    background-color: var(--color-middle-bg);
+}
+
+main .middle-container.closed {
+    margin-left: -560px;
+    z-index: 90;
+}
+
+.middle-container .search {
+    display: flex;
+
+    width: calc(100% - 2*5px);
+    height: 50px;
+
+    margin: 5px;
+
+    z-index: 110;
+    background-color: var(--color-search);
+}
+
+.middle-container .middle-bag-list{
+    display: grid;
+    position: relative;
+    overflow-y: scroll;
+
+    column-gap: 5px;
+    row-gap: 5px;
+
+    justify-content: center;
+
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-auto-rows: calc(100px + 40px + 20px + 23px);
+
+    width: calc(100% - 2*5px);
+    height: 100%;
+
+    padding: 5px;
+
+    background-color: var(--color-middle-bg);
+
+}
+
+.middle-bag-list .bag-item {
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--color-bag-item);
+}
+
+.middle-bag-list .bag-item:hover {
+    background-color: var(--color-bag-item-hover);
+}
+
+.bag-item .image{
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 90px;
+    height: 90px;
+}
+
+.bag-item .types{
+    user-select: none;
+    display: flex;
+    justify-content: center;
+
+    height: 40px;
+    width: 80px;
+}
+
+.bag-item .number{
+    user-select: none;
+    font-size: 17px;
+    color: var(--color-text-number);
+}
+
+.bag-item .name{
+    user-select: none;
+    font-size: 20px;
+    color: var(--color-text-name);
+}
+
+
+
+
+main .right-container {
+    display: flex;
+    flex-direction: column;
+
+    
+    position: absolute;
+    right: 0;
+
+    width: 280px;
+    
+    top: 100px;
+
+    z-index: 10;
+    background-color: rgb(56, 86, 255);
+}
+
+.right-container .resistences {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 35px;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(255, 56, 212);
+}
+
+.resistences .label {
+    display: flex;
+
+    font-size: 27px;
+    user-select: none;
+}

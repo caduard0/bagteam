@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BagTeam</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <a href="https://www.google.com">
+            <img class="logo" src="JoestarZeppeliPoster.png">
+        </a>
+    </header>
+    
+    <main>
+        <div class="app">
+            <template id="bag-space-template">
+                <div class="bag-space" onclick="SelectBagSpace(event)">
+                    <div class="label">Selecionar Bagmon</div>
+                </div>
+            </template>
+
+            <template id="bag-overview-template">
+                <div class="bag-overview" onclick="SelectBagSpace(event)">
+                    <div class="close">x</div>
+                    <img class="image" src="images/bagmons/1.png">
+                    <div class="details">
+                        <div class="number">
+                            <div>#001</div>
+                            <img class="types" src="images/types/Fighting_icon_HOME3.png">
+                            <img class="types" src="images/types/Flying_icon_HOME3.png">
+                        </div>
+                        <div class="name">Voara</div>
+                    </div>
+                </div>
+            </template>
+
+            <template id="bag-item-template">
+                <div class="bag-item" onclick="FillSelected(event)">
+                    <img class="image" src="images/bagmons/1.png">
+                    <div class="types">
+                        <img src="images/types/bagdex/normal.webp" height="35px" width="35px">
+                        <img src="images/types/bagdex/normal.webp" height="35px" width="35px">
+                    </div>
+                    <div class="number">#001</div>
+                    <div class="name">Voara</div>
+                </div>
+            </template>
+
+            <div class="left-container">
+                <div class="bagmon-list"></div>
+            </div>
+
+            <div class="middle-container">
+                <div class="search"></div>
+                <div class="middle-bag-list"></div>
+            </div>
+
+            <div class="right-container">
+                <div class="resistences">
+                    <div class="label">Resistências da Equipe</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        Este é um projeto NÃO OFICIAL SEM FINS LUCRATIVOS link para o site oficial:&nbsp;
+        <a href="https://bagdex.com.br" style="color: rgb(110, 156, 255);">
+            BágDex
+        </a>
+    </footer>
+</body>
+
+<script src="./script.js"></script>
+</html>
