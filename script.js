@@ -39,6 +39,16 @@ function ImageExists(image_url)
   return http.status != 404;
 }
 
+function DownloadObjectAsJson(exportObj, exportName){
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+  var downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href",     dataStr);
+  downloadAnchorNode.setAttribute("download", exportName + ".json");
+  document.body.appendChild(downloadAnchorNode); // required for firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+}
+
 function FillBagSpaces()
 {
   var bagmon_list = document.querySelector(".bagmon-list");
@@ -56,7 +66,7 @@ async function FillMiddleContainer()
 
   data = await GetData();
 
-  for(let i = 1; i <= 151; i++)
+  for(let i = 1; i <= 154; i++)
   {
     var current_item = bag_item.cloneNode(true);
     current_item.querySelector(".number").innerHTML = "#";
@@ -157,3 +167,56 @@ function FillSelected(event)
 
 FillBagSpaces();
 FillMiddleContainer();
+
+
+function AddNewBagmon(bagmons, new_bagmon, place)
+{
+  var new_object = {};
+  
+  for (const key in bagmons)
+  {
+    if (key < place)
+      new_object[key] = bagmons[key];
+    else
+      new_object[parseInt(key) + 1] = bagmons[key];
+  }
+
+  new_object[place] = new_bagmon;
+
+  return new_object;
+}
+
+function MakeBagmon(name, name_lower, types, attributes)
+{
+  return {
+    "name" : name,
+    "types" : { 1: types[0], 2: types[1]},
+    "attributes" : {
+      "atk": 20,
+      "atke": 25,
+      "def": 20,
+      "defe": 30,
+      "hp": 50,
+      "spd": 30
+    },
+    "name_lower" : name_lower
+  }
+}
+
+async function ChangeData()
+{
+  var data = await GetData();
+
+  var new_data = {};
+
+  new_bagmons = [
+    MakeBagmon("Magato", "magato", ["voltaico", "nenhum"], [-1, -1, -1, -1, -1, -1]),
+    MakeBagmon("Magaiato", "magaiato", ["voltaico", "nenhum"], [-1, -1, -1, -1, -1, -1]),
+    MakeBagmon("Amatirica", "amatirica", ["voltaico", "noturno"], [-1, -1, -1, -1, -1, -1]),
+  ];
+
+  for (let i = 0; i < new_bagmons.length; i++)
+  {
+    data = AddNewBagmon(data, new_bagmons[i], i+13);
+  }
+}
